@@ -1,0 +1,15 @@
+current directory: /vagrant/brocante/vendor/bundle/ruby/2.5.0/gems/bindex-0.7.0/ext/skiptrace
+/usr/bin/ruby2.5 -r ./siteconf20190612-9043-1yzi5t4.rb extconf.rb
+creating Makefile
+
+current directory: /vagrant/brocante/vendor/bundle/ruby/2.5.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /vagrant/brocante/vendor/bundle/ruby/2.5.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/cruby.so
+
+current directory: /vagrant/brocante/vendor/bundle/ruby/2.5.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20190612-9043-487wk/skiptrace

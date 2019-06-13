@@ -62,7 +62,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # user_signup_admin
 gem 'devise'
-gem 'omniauth-twitter'
+#gem 'omniauth-google-oauth2'
 gem 'cancancan'
 gem 'rails_admin'
 # image

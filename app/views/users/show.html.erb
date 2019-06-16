@@ -1,0 +1,8 @@
+<h1>Users#show</h1>
+<p>画像 : <%= attachment_image_tag @user, :image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>no_image.jpg</p>
+<p>ニックネーム : <%= @user.webname %></p>
+<p>プロフィール : <%= @user.profile %></p>
+
+<% if @user.id == current_user.id %>
+ <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+<% end %>

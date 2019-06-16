@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'home#top'
+  
  devise_for :hosts, controllers: {
   #get "sign_in", to: "devise/sessions"
   sessions:      'hosts/sessions',
@@ -12,6 +13,9 @@ Rails.application.routes.draw do
    passwords: 'users/passwords',
    registrations: 'users/registrations'
 }
+
+  resources :users, only: [:show, :edit, :update]
+  resources :hosts, only: [:show, :edit, :update]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -4,15 +4,25 @@
     <title>Brocante</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <% if user_signed_in? %>
-    <span><%= link_to 'Logout', destroy_user_session_path, method: :delete %></span>
-    <% end %>
-    <% if host_signed_in? %>
-    <span><%= link_to 'Logout', destroy_host_session_path, method: :delete %></span>
-    <% end %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+    <% if user_signed_in? then %>
+      <span><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></span>
+      <span><%= link_to 'マイページ', user_path(current_user.id) %></span>
+    <% else %>
+      <%= link_to 'ユーザーログインページ', new_user_session_path, method: :get %>
+    <% end %>
+
+    <% if host_signed_in? then %>
+      <span><%= link_to 'ログアウト', destroy_host_session_path, method: :delete %></span>
+      <span><%= link_to '主催者様ページ', host_path(current_host.id) %></span>
+    <% else %>
+      <%= link_to '主催者ログインページ', new_host_session_path, method: :get %>
+    <% end %>
+
+
   </head>
 
   <body>

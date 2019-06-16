@@ -1,0 +1,31 @@
+<h1>Hosts#edit</h1>
+
+<%= form_for(@host) do |f| %>
+
+    <div class="form-group has-icon">
+        <%= f.label :group_name, '会社名/団体名' %>
+        <%= f.text_field :group_name, class: 'form-control',placeholder:"会社名/団体名" %>
+    </div>
+
+    <div class="form-group has-icon">
+        <%= f.label :rep_name, '代表者名' %>
+        <%= f.text_field :rep_name, class: 'form-control',placeholder:"代表者名" %>
+    </div>
+
+    <div class="form-group has-icon">
+        <%= f.label :address, 'プロフィール' %>
+        <%= f.text_field :address, class: 'form-control',placeholder:"住所" %>
+    </div>
+
+    <div class="form-group has-icon">
+        <%= f.label :email, 'メールアドレス' %>
+        <%= f.text_field :email, class: 'form-control',placeholder:"メールアドレス" %>
+    </div>
+
+    <div class="form-group has-icon">
+        <%= f.label :url, 'ホームページURL' %>
+        <%= f.text_field :url, class: 'form-control',placeholder:"ホームページURL" %>
+    </div>
+
+    <%= f.submit "変更を保存", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+<% end %>

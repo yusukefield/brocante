@@ -1,0 +1,11 @@
+<div class="d-flex align-items-center">
+<h1>New Event</h1>
+<div class="ml-auto posts_button">
+      <a class="btn btn-outline-info" href="/posts">投稿一覧</a>
+  </div>
+</div>
+
+
+<%= render 'form', event: @event %>
+
+<%= link_to 'Back', events_path %>

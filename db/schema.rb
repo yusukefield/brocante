@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_101400) do
+ActiveRecord::Schema.define(version: 2019_06_17_034029) do
+
+  create_table "events", force: :cascade do |t|
+    t.integer "host_id"
+    t.date "date"
+    t.string "title"
+    t.text "body"
+    t.string "picture_id"
+    t.integer "prefecture_code"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "hosts", force: :cascade do |t|
     t.text "group_name"

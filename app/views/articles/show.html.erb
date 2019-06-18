@@ -1,0 +1,84 @@
+<script type="text/javascript">
+    function initMap() {
+
+        var test ={lat: <%= @latitude %>, lng: <%= @longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: test
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = '住所：<%= @address %>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+
+<p id="notice"><%= notice %></p>
+
+<div class="card">
+  <div class="card-header bg-info text-white">
+  <strong>Title:</strong>
+  <h4><%= @article.title %></h4>
+</div>
+
+<div class="card-body">
+  <p>
+    <strong>Body:</strong>
+    <%= @article.body %>
+  </p>
+</div>
+
+<div class="card-footer">
+<p>
+  <strong>Date:</strong>
+  <%= @article.date %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @article.country %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @article.category %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @article.address %>
+</p>
+</div>
+
+
+<p>
+  <strong>Like count:</strong>
+  <%= @article.like_count %>
+</p>
+
+<style type="text/css">
+  #map { height: 400px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    width: 80%;}
+</style>
+<div id="map"></div>
+
+
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>

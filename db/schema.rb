@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_18_031952) do
+ActiveRecord::Schema.define(version: 2019_06_18_054101) do
+
+  create_table "article_pictures", force: :cascade do |t|
+    t.integer "article_id"
+    t.string "picture_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.date "date"
+    t.string "title"
+    t.text "body"
+    t.string "country"
+    t.string "category"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "user_id"
+    t.integer "like_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.integer "host_id"

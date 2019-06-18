@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2019-06-18
+  title: MyString
+  body: MyText
+  country: MyString
+  category: MyString
+  address: MyString
+  latitude: 1.5
+  longitude: 1.5
+  user_id: 1
+  like_count: 1
+
+two:
+  date: 2019-06-18
+  title: MyString
+  body: MyText
+  country: MyString
+  category: MyString
+  address: MyString
+  latitude: 1.5
+  longitude: 1.5
+  user_id: 1
+  like_count: 1

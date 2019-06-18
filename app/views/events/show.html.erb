@@ -58,6 +58,11 @@
   <%= @event.address %>
 </p>
 
+<!-- 気になるボタンを追加/ -->
+ <div id="joins_buttons_<%= @event.id %>">
+ <%= render partial: 'joins/join', locals: { event: @event, joins: @joins} %>
+</div>
+
 
 <style type="text/css">
   #map { height: 400px;

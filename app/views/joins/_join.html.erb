@@ -1,0 +1,42 @@
+<% if user_signed_in? %>
+
+  <% unless event.join_user(current_user.id).blank? %>
+    <%= link_to event_join_path(event_id: event.id ,id: event.joins[0].id), method: :delete, remote: true do %>
+      <div class="vertical-align-top">
+        <i class="fas fa-thumbtack text-warning"></i>
+        <span class="orange-text">
+          <%= event.join_count %>
+        </span>
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to event_joins_path(event.id), method: :post, remote: true do %>
+      <div class="vertical-align-top">
+        <i class="fas fa-thumbtack grey-text text-multed"></i>
+        <span class="grey-text text-multed">
+          <%= event.join_count %>
+        </span>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% else %>
+
+  <% if event.joins_count > 0 %>
+    <div class="vertical-align-top">
+      <i class="fas fa-thumbtack text-warning"></i>
+      <span class="orange-text">
+        <%= event.join_count %>
+      </span>
+    </div>
+  <% else %>
+    <div class="vertical-align-top">
+      <i class="fas fa-thumbtack text-multed"></i>
+      <span class="grey-text text-multed">
+        <%= event.join_count %>
+      </span>
+    </div>
+  <% end %>
+
+<% end %>
+

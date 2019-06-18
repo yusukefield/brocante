@@ -77,6 +77,7 @@ gem 'kaminari', '~> 1.1.1'
 gem 'rails-i18n', '~> 5.1'
 gem 'gretel'
 gem "select2-rails"
+gem "enum_help"
 # function
 gem 'ransack'
 gem 'geocoder'

@@ -4,7 +4,12 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    #タグ絞り込み tagged_withメソッド
+    if params[:tag_name].present?
+      @articles = Article.tagged_with([params[:tag_name]])
+    else
+      @articles = Article.all
+    end
   end
 
   # GET /articles/1
@@ -31,7 +36,8 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
-
+    @article.user_id = current_user.id
+    @article.tag_list = article_params[:tag_list]
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -75,6 +81,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:date, :title, :body, :country, :category, :address, :latitude, :longitude, :user_id, article_pictures_pictures: [])
+      params.require(:article).permit(:date, :title, :body, :country, :category, :address, :latitude, :longitude, :tag_list, article_pictures_pictures: [])
     end
 end

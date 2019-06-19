@@ -19,6 +19,8 @@ class ArticlesController < ApplicationController
     @latitude = @article.latitude
     @longitude = @article.longitude
     @address = @article.address
+    @comment = Comment.new
+    @comments = @article.comments
   end
 
   # GET /articles/new

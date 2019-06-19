@@ -1,0 +1,10 @@
+<% comments.each do |comment| %>
+  <% unless comment.id.nil? %>
+    <p><%= link_to "#{comment.user.webname}さん", user_path(comment.user.id) %></p>
+    <p>コメント：<%= comment.message %></p>
+    <% if comment.user == current_user %>
+      <p><%= link_to 'コメントを削除する', article_comment_path(comment.article_id, comment.id), method: :delete, remote: true %></p>
+    <% end %>
+  <% end %>
+<% end %>
+<!-- remote: true でjsファイルを探す-->

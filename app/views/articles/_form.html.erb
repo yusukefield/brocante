@@ -38,7 +38,7 @@
 
   <div class="form-group"> 
     <%= form.label :tag_list %>
-    <%= form.text_field :tag_list, value: @article.tag_list.join(','), class: "form-control" %>
+    <%= form.text_field :tag_list, value: @article.tag_list.join(','), class: "form-control", "data-role" => "tagsinput" %>
   </div>
 
   <div class="field">

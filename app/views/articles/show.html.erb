@@ -83,10 +83,13 @@
 
 <div>
     <h4>コメント</h4>
-    <div id="comments_area">
-      <!-- 投稿されたコメント一覧をブログの詳細ページに表示する-->
-      <%= render partial: 'comments/index', locals: { comments: @comments } %>
-    </div>  
+    <% @comments.each do |comment| %><br/>
+        投稿者：<%= comment.user.webname %><br/>
+        コメント：<%= comment.message %>
+          <% if comment.user == current_user %>
+            <p><%= link_to 'コメントを削除する', article_comment_path(comment.article_id, comment.id), method: :delete %></p>
+          <% end %>
+        <% end %>
     <% if user_signed_in? %>
       <!-- コメント入力欄をブログの詳細ページに表示するため-->
       <%= render partial: 'comments/form', locals: { comment: @comment, article: @article } %>

@@ -1,18 +1,19 @@
 class CommentsController < ApplicationController
+before_action :authenticate_user!
   def create
     @article = Article.find(params[:article_id])
-    @comment = @article.comments.new(comment_params) #@articleのidをarticle_idに含んだ形でcommentインスタンスを作成
+    @comment = Comment.create(params[:comment].permit(:message))
     @comment.user_id = current_user.id
-    if @comment.save
-      render :index
-    end
+    @comment.article_id = @article.id
+    @comment.save
+    redirect_to article_path(@article)
   end
 
   def destroy
+  	@article = Article.find(params[:article_id])
     @comment = Comment.find(params[:id])
-    if @comment.destroy
-      render :index
-    end
+    @comment.delete
+    redirect_to article_path(@article)
   end
 
   private

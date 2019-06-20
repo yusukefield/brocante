@@ -1,9 +1,17 @@
 <h1>Users#show</h1>
-<p>画像 : <%= attachment_image_tag @user, :image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>no_image.jpg</p>
+<p>画像 : <%= attachment_image_tag @user, :image, :fill, 60, 60, class: "", fallback: "no_image.jpg"%>no_image.jpg</p>
 <p>ニックネーム : <%= @user.webname %></p>
 <p>プロフィール : <%= @user.profile %></p>
 
 <% if @user.id == current_user.id %>
  <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <p><%= link_to 'New Article', new_article_path(@user) %></p>
+
+<h4>参加する予定</h4>
+  <% @join.each do |join| %>
+  <% @event_id = join.event_id %>
+   <% event = Event.find(join.event_id) %>
+    <tr><p>日付: <%= event.date  %></p></tr>
+    <tr><p>場所: <%= event.address %></p></tr>
+  <% end %>
 <% end %>

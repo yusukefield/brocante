@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def show
      @user = User.find(params[:id])
+     @event = Event.find(params[:id])
+     @join = Join.where(event_id: @event.id).all
   end
 
   def edit
@@ -10,7 +12,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if current_user == @user
- 
+
      if @user.update(user_params)
         flash[:success] = 'ユーザー情報を編集しました。'
         redirect_to user_path(@user)
@@ -21,8 +23,10 @@ class UsersController < ApplicationController
     end
   end
 
+
   private
   def user_params
       params.require(:user).permit(:name, :webname, :profile, :image, :email)
   end
+
 end

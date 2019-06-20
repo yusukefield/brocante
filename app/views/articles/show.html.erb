@@ -28,8 +28,17 @@
 
 <p id="notice"><%= notice %></p>
 
+<% if @article.article_pictures.present? %>
+  <% @article.article_picture_id.each do |picture| %>
+    <%= attachment_image_tag picture, :image, :fill, 500, 500, format: 'jpeg', class: "img-thumbnail" %>
+  <% end %>
+<% else %>
+    <%= image_tag 'no_image.jpg', size: '200x200' %>
+<% end %>
+
 <div class="card">
   <div class="card-header bg-info text-white">
+
   <strong>Title:</strong>
   <h4><%= @article.title %></h4>
 </div>
@@ -80,6 +89,10 @@
     width: 80%;}
 </style>
 <div id="map"></div>
+
+<div id="likes_buttons_<%= @article.id %>">
+ <%= render partial: 'likes/like', locals: { article: @article, likes: @likes} %>
+</div>
 
 <div>
     <h4>コメント</h4>

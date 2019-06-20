@@ -1,8 +1,8 @@
 class Event < ApplicationRecord
-  #prefecture_codeからprefecture_nameに変換する
   attachment :picture
   belongs_to :host
-  has_many :joins, dependent: :destroy
+  has_many :joins, dependent: :destroy, foreign_key: 'Event_id'
+  has_many :users, through: :joins, source: :event
   geocoded_by :address
   after_validation :geocode
 
@@ -16,7 +16,7 @@ class Event < ApplicationRecord
 
   include JpPrefecture
      jp_prefecture :prefecture_code
-
+  #prefecture_codeからprefecture_nameに変換する
   def prefecture_name
     JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
   end

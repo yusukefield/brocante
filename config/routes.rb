@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'home#top'
-  
+
  devise_for :hosts, controllers: {
   #get "sign_in", to: "devise/sessions"
   sessions:      'hosts/sessions',
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :joins, only: [:create, :destroy]
   end
   resources :articles do
+    resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
 

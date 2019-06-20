@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   def show
      @user = User.find(params[:id])
-     @event = Event.find(params[:id])
-     @join = Join.where(event_id: @event.id).all
+     #@event = Event.find(params[:id])
+     @join = Join.where(user_id: @user.id).all
+    # @article = Article.find(params[:id])
+     @like = Like.where(user_id: @user.id).all
   end
 
   def edit

@@ -29,8 +29,8 @@
 <p id="notice"><%= notice %></p>
 
 <% if @article.article_pictures.present? %>
-  <% @article.article_picture_id.each do |picture| %>
-    <%= attachment_image_tag picture, :image, :fill, 500, 500, format: 'jpeg', class: "img-thumbnail" %>
+  <% @article.article_pictures.each do |picture| %>
+    <%= attachment_image_tag picture, :picture, format: 'jpeg', size: '200x200', class: "img-thumbnail" %>
   <% end %>
 <% else %>
     <%= image_tag 'no_image.jpg', size: '200x200' %>

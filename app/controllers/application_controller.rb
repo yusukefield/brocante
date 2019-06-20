@@ -17,6 +17,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
   # user
   def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :webname])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:image]) #ユーザーの画像編集を可にする
   end
 
   # host

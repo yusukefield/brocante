@@ -1,5 +1,7 @@
 <h1>Users#show</h1>
-<p>画像 : <%= attachment_image_tag @user, :image, :fill, 60, 60, class: "", fallback: "no_image.jpg"%>no_image.jpg</p>
+<!-- <p>画像 : <%#= attachment_image_tag @user, :image, :fill, 100, 100, fallback: "no_image.jpg", size: '200x200'%></p> -->
+<p>画像 : <%= attachment_image_tag @user, :image,fallback: "no_image.jpg", size: '200x200'%></p>
+
 <p>ニックネーム : <%= @user.webname %></p>
 <p>プロフィール : <%= @user.profile %></p>
 
@@ -9,9 +11,18 @@
 
 <h4>参加する予定</h4>
   <% @join.each do |join| %>
-  <% @event_id = join.event_id %>
-   <% event = Event.find(join.event_id) %>
-    <tr><p>日付: <%= event.date  %></p></tr>
-    <tr><p>場所: <%= event.address %></p></tr>
+    <% event = Event.find(join.event_id) %>
+      <tr><p>日付: <%= event.date  %></p></tr>
+      <tr><p>場所: <%= event.address %></p></tr>
   <% end %>
+
+<h4>ストック記事</h4>
+  <% @like.each do |like| %>
+    <% article = Article.find(like.article_id) %>
+      <tr><p>タイトル: <%= article.title %></p></tr>
+      <tr><p>場所: <%= article.address %></p></tr>
+  <% end %>
+
 <% end %>
+
+

@@ -3,6 +3,7 @@ class Article < ApplicationRecord
     has_many :article_pictures, dependent: :destroy
     has_many :comments, dependent: :destroy
     has_many :likes, dependent: :destroy
+    has_many :users, through: :likes, source: :article
     accepts_attachments_for :article_pictures, attachment: :picture
     geocoded_by :address
     after_validation :geocode

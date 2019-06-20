@@ -22,7 +22,7 @@
 
 <% else %>
 
-  <% if article.like_count > 0 %>
+  <% if !article.like_count.nil? && article.like_count > 0 %>
     <div class="vertical-align-top">
         <i class="fas fa-plus-square text-danger"></i>
       <span class="orange-text">

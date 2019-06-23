@@ -1,17 +1,87 @@
-<h1>Home#top</h1>
-<p>Find me in app/views/home/top.html.erb</p>
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="card">
-        <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="main-visual">
+        <div class="theTarget">
+            <div style="background-image: url(sample01.jpg)"></div>
+            <div style="background-image: url(sample02.jpg)"></div>
+            <div style="background-image: url(sample03.jpg)"></div>
+        </div>
         </div>
       </div>
     </div>
 
-  </div>
+    <div class="row">
+
+      <div class="col-md-3">
+        <div id="float-my-box">
+
+          <div class="card" style="width: 15rem;">
+
+            <div class="card-header">
+              <% if user_signed_in? then %>
+                <h5><% @user.webname %></h5>
+              <% else %>
+                <h5>ようこそ　ゲスト様</h5>
+              <% end %>
+            </div>
+
+            <div class="card-body">
+              <p class="card-text">
+               <% if user_signed_in? then %>
+                 <span><%= link_to 'My page', user_path(current_user.id) %></span><br>
+                 <span><%= link_to 'Log out', destroy_user_session_path, method: :delete %></span>
+               <% else %>
+                 <%= link_to 'Log in', new_user_session_path, method: :get %><br>
+                 <%= link_to 'New menber', new_user_registration_path, method: :get %>
+               <% end %>
+             </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+        <div class="col-md-9">
+          <div class="main">
+
+            <div class="col-md-9">
+              <div class="display-3" id="sec1">About</div>
+              <h5>テキスト</h5>
+            </div>
+
+            <div class="col-md-9">
+              <div class="display-3"  id="sec2">To hosts</div>
+                <h3>主催予定のイベントをお寄せください</h3>
+                <h5></h5>
+                  <% if host_signed_in? then %>
+                    <span><%= link_to 'ログアウト', destroy_host_session_path, method: :delete %></span>
+                    <span><%= link_to 'Host-page', host_path(current_host.id) %></span>
+                  <% else %>
+                    <%= link_to 'Host Log-in', new_host_session_path, method: :get %>
+                    <%= link_to 'New Host', new_host_registration_path, method: :get %>
+                  <% end %>
+            </div>
+
+            <div class="card" style="width: 20rem;">
+              <div class="card-header">
+                Header
+              </div>
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+
+          <%= link_to "", '/', class:"navbar-brand" %>
+          </div>
+        </div>
+
+      </div>
+    
 </div>

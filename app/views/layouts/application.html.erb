@@ -1,34 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title>Brocante</title>
+    <meta charset="UTF-8">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel=“stylesheet” href=“style.css”>
-    <link href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" rel="stylesheet">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBClg0DBgLluH4TKeYOZDfBFXWQc-xLATs&callback=initMap" async defer></script>
 
-    <% if user_signed_in? then %>
-      <span><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></span>
-      <span><%= link_to 'マイページ', user_path(current_user.id) %></span>
-    <% else %>
-      <%= link_to 'ユーザーログインページ', new_user_session_path, method: :get %>
-    <% end %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %> <!-- bootstrap4を読み込む！ -->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> <!-- bootstrap4を読み込む！ -->
 
-    <% if host_signed_in? then %>
-      <span><%= link_to 'ログアウト', destroy_host_session_path, method: :delete %></span>
-      <span><%= link_to '主催者様ページ', host_path(current_host.id) %></span>
-    <% else %>
-      <%= link_to '主催者ログインページ', new_host_session_path, method: :get %>
-    <% end %>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBClg0DBgLluH4TKeYOZDfBFXWQc-xLATs&callback=initMap" async defer></script> <!-- googlemapを読み込む！ -->
 
-
-  </head>
+    <link rel=“stylesheet” href=“style.css”> <!-- style.cssを読み込む！ -->
+    <%= stylesheet_link_tag "custom", :media => "all" %> <!-- bootstapに上書きするcssを読み込む！ -->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap" rel="stylesheet"><!-- googlefontを読み込む！ -->
+    <link href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" rel="stylesheet"><!-- fontawesomeを読み込む！ -->
+　</head>
   
   <body>
+
+    <!-- <script src="brocante.js"></script> -->
+    <!-- <script src="float-my-box.js"></script> -->
+    <!-- <script src="anker.js"></script> -->
+
+
+
+    <header class="site-header">
+    <h1 class="site-logo"><img src="" alt="BROCANTE"></h1>
+    <nav class="gnav">
+        <ul class="gnav__menu">
+            <h5 class="gnav__menu__item fas fa-angle-double-down mr-2"><a href="#sec1"> About</a></h5>
+
+            <h5 class="gnav__menu__item fas fa-handshake mr-2"><a href="#sec2"> toHost</a></h5>
+
+            <h5 class="gnav__menu__item fas fa-info-circle mr-2"><a href=""> Info</a></h5>
+
+            <span class="gnav__menu__item">
+              <%= link_to "/articles" do %>
+                <h5 class="gnav__menu__item fas fa-book-open mr-2"> Articles</h5>
+              <% end %>
+            </span>
+
+            <span class="gnav__menu__item">
+              <%= link_to "/events" do %>
+                <h5 class="gnav__menu__item fas fa-warehouse mr-2"> Events</h5>
+              <% end %>
+            </span>
+
+             <% if host_signed_in? then %>
+               <span class="gnav__menu__item">
+                <%= link_to "/host" do %>
+                  <h5><i class="gnav__menu__item fas fa-book-open mr-2"></i>Log-out</h5>
+                <% end %>
+                  %= link_to 'Log-out', destroy_host_session_path, method: :delete %></span>
+             <% end %>
+        </ul>
+    </nav>
+　　 </header>
+
     <%= yield %>
+      <footer class="site-footer">
+        <p class="copyright">@2019 WEBCAMP</p>
+      </footer>
   </body>
 </html>

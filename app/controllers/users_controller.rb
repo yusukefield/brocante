@@ -3,7 +3,7 @@ class UsersController < ApplicationController
      @user = User.find(params[:id])
      #@event = Event.find(params[:id])
      @join = Join.where(user_id: @user.id).all
-    # @article = Article.find(params[:id])
+     @articles = Article.where(user_id: @user.id).all
      @like = Like.where(user_id: @user.id).all
   end
 

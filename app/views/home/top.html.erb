@@ -1,4 +1,5 @@
 <div class="container">
+
     <div class="row">
 
       <div class="col-md-12">
@@ -10,78 +11,78 @@
         </div>
         </div>
       </div>
-    </div>
+    </div><br>
 
     <div class="row">
+       <div class="col-md-3">
 
-      <div class="col-md-3">
-        <div id="float-my-box">
+       <%= render partial: 'mybox' %>
 
-          <div class="card" style="width: 15rem;">
-
-            <div class="card-header">
-              <% if user_signed_in? then %>
-                <h5><% @user.webname %></h5>
-              <% else %>
-                <h5>ようこそ　ゲスト様</h5>
-              <% end %>
-            </div>
-
-            <div class="card-body">
-              <p class="card-text">
-               <% if user_signed_in? then %>
-                 <span><%= link_to 'My page', user_path(current_user.id) %></span><br>
-                 <span><%= link_to 'Log out', destroy_user_session_path, method: :delete %></span>
-               <% else %>
-                 <%= link_to 'Log in', new_user_session_path, method: :get %><br>
-                 <%= link_to 'New menber', new_user_registration_path, method: :get %>
-               <% end %>
-             </p>
-            </div>
-          </div>
-
-        </div>
       </div>
+      <div class="col-md-9 float-right">
+
+              <div class="display-3" id="sec1">About
+              <h5 class="text-muted">このサイトについて</h5></div>
+              <h5>「Brocante」とはフランス語で「美しいガラクタ」の意味です。<br>
+              アンティークほど高価で貴重なわけではないけれど、人と一緒に生活を営んできた痕跡を持ちながら
+              形を成す雑貨たちは唯一無二の価値を持つ存在です。<br>
+              ここではそんな人の手を渡ってきた雑貨を扱う蚤の市やショップ、イベントの情報を共有できるサイトと
+              なっております。<br>
+              あなたの地元や近所で行われる催しの情報や、蚤の市で入手したアイテムをぜひ自慢してください！<br>
+              <small class="text-muted">※投稿にはメンバー登録が必要となります。</small></h5>
+
+              <div class="row">
+                <div class="col-md-4 col-sm-6 text-center mt-4 mb-4">
+                   <img class="rounded-circle img-fluid d-block mx-auto" src="/assets/sample04.jpg" alt=""><br>
+                   <h3>イベントや出店情報をチェックしよう！</h3>
+                   <p>あなたの近所で行われている「蚤の市」情報をチェックして出かけてみよう！<br>
+                   イベント情報をブックマークするとマイページに予定が表示されます！</p>
+                </div>
+
+                <div class="col-md-4 col-sm-6 text-center mt-4  mb-4">
+                  <img class="rounded-circle img-fluid d-block mx-auto" src="/assets/sample05.jpg" alt=""><br>
+                  <h3>みんなでアイテムを自慢し合おう！</h3>
+                  <p>「Articles」ではみなさんが蚤の市でゲットした素敵なアイテムの写真を見ることができます。<br>
+                  素敵なお部屋のインテリアや可愛いブロカンテの写真をお待ちしております。</p>
+                </div>
+
+                <div class="col-md-4 col-sm-6 text-center mt-4  mb-4">
+                  <img class="rounded-circle img-fluid d-block mx-auto" src="/assets/sample06.jpg" alt=""><br>
+                  <h3>旅行先の蚤の市情報を集めよう！</h3>
+                  <p>旅先でしか会うことのできない名産品、限定品。特に海外では蚤の市が頻繁に行われています。<br>
+                  「Brocante」では現地の方からの貴重な情報も共有することができますよ！</p>
+                </div>
+              </div>
+
+
+            <div class="display-3 mb-4"  id="sec2">to Hosts
+              <h5 class="text-muted">イベント主催者・オーナー様</h5></div>
+                <h3>当サイトではイベントを企画されている会社様、団体様の登録をお待ちしております。<br>
+                    イベントの内容を投稿して当サイト利用者に向け告知をすることができます。
+                    是非フリーマーケットや蚤の市等の情報をお寄せください</h3>
+
+                    <div class="card" style="width: 40rem;">
+                        <div class="card-header">
+                         <h5>主催者様専用登録ページ/ログインページはこちら >></h5>
+                        </div>
+                        <div class="card-body text-center">
+                         <% if host_signed_in? then %>
+                           <span><%= link_to 'ログアウト', destroy_host_session_path, method: :delete, class: "btn btn-info btn-sm mb-2" %></span>
+                           <span><%= link_to 'Host-page', host_path(current_host.id), class: "btn btn-info btn-sm mb-2" %></span>
+                         <% else %>
+                           <% if !user_signed_in? %>
+                             <%= link_to 'Host Log-in', new_host_session_path, method: :get, class: "btn btn-info btn-sm mb-2" %>
+                             <%= link_to 'New Host', new_host_registration_path, method: :get, class: "btn btn-info btn-sm mb-2" %>
+                           <% end %>
+                         <% end %>
+                        </div>
+                   </div>
+
+          </div>
+        </div>
+
 
     </div>
 
-        <div class="col-md-9">
-          <div class="main">
 
-            <div class="col-md-9">
-              <div class="display-3" id="sec1">About</div>
-              <h5>テキスト</h5>
-            </div>
-
-            <div class="col-md-9">
-              <div class="display-3"  id="sec2">To hosts</div>
-                <h3>主催予定のイベントをお寄せください</h3>
-                <h5></h5>
-                  <% if host_signed_in? then %>
-                    <span><%= link_to 'ログアウト', destroy_host_session_path, method: :delete %></span>
-                    <span><%= link_to 'Host-page', host_path(current_host.id) %></span>
-                  <% else %>
-                    <%= link_to 'Host Log-in', new_host_session_path, method: :get %>
-                    <%= link_to 'New Host', new_host_registration_path, method: :get %>
-                  <% end %>
-            </div>
-
-            <div class="card" style="width: 20rem;">
-              <div class="card-header">
-                Header
-              </div>
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-
-          <%= link_to "", '/', class:"navbar-brand" %>
-          </div>
-        </div>
-
-      </div>
-    
 </div>

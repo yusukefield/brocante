@@ -1,34 +1,45 @@
-<h1>Users#edit</h1>
+<div class="container">
+  <div class="form">
 
-<%= form_for(@user) do |f| %>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 ml-auto mr-auto mb-5">
 
-　　<div class="form-group has-icon">
-　　<div class="user-edit-image">
-        <%= attachment_image_tag @user, :image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
+        <%= form_for(@user) do |f| %>
+
+　　      <div class="form-group has-icon">
+　　      <div class="user-edit-image">
+            <h5><%= f.label '現在のプロフィール画像' %></h5>
+              <%= attachment_image_tag @user, :image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
+          </div>
+            <label class="control-label sr-only" for="inputEmail">ProfileImage</label>
+               <%= f.attachment_field :image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+　　      </div>
+
+          <div class="form-group has-icon">
+              <%= f.label :name, '名前' %>
+              <%= f.text_field :name, class: 'form-control',placeholder:"名前" %>
+          </div>
+
+          <div class="form-group has-icon">
+              <%= f.label :webname, 'ニックネーム' %>
+              <%= f.text_field :webname, class: 'form-control',placeholder:"ニックネーム" %>
+          </div>
+
+          <div class="form-group has-icon">
+              <%= f.label :profile, 'プロフィール' %>
+              <%= f.text_area :profile, class: 'form-control',placeholder:"プロフィール(100文字以内)" %>
+          </div>
+
+          <div class="form-group has-icon">
+              <%= f.label :email, 'メールアドレス' %>
+              <%= f.text_field :email, class: 'form-control',placeholder:"メールアドレス" %>
+          </div>
+
+          <%= f.submit "変更を保存", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+        <% end %>
+
+      </div>
     </div>
-    <label class="control-label sr-only" for="inputEmail">ProfileImage</label>
-         <%= f.attachment_field :image, placeholder: "プロフィール画像", class: "user-edit-form" %>
-　　</div>
-
-    <div class="form-group has-icon">
-        <%= f.label :name, '名前' %>
-        <%= f.text_field :name, class: 'form-control',placeholder:"名前" %>
-    </div>
-
-    <div class="form-group has-icon">
-        <%= f.label :webname, 'ニックネーム' %>
-        <%= f.text_field :webname, class: 'form-control',placeholder:"ニックネーム" %>
-    </div>
-
-    <div class="form-group has-icon">
-        <%= f.label :profile, 'プロフィール' %>
-        <%= f.text_field :profile, class: 'form-control',placeholder:"プロフィール" %>
-    </div>
-
-    <div class="form-group has-icon">
-        <%= f.label :email, 'メールアドレス' %>
-        <%= f.text_field :email, class: 'form-control',placeholder:"メールアドレス" %>
-    </div>
-
-    <%= f.submit "変更を保存", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
-<% end %>
+    
+  </div>
+</div>

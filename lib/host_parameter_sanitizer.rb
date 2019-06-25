@@ -5,6 +5,7 @@ class HostParameterSanitizer < Devise::ParameterSanitizer
   end
 
   def sign_up
+    p default_params.require(:host).permit(:group_name, :rep_name, :address, :phonenum)
     default_params.require(:host).permit(:group_name, :rep_name, :address, :phonenum)
   end
 

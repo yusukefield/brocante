@@ -3,7 +3,7 @@
   <% unless article.like_user(current_user.id).blank? %>
     <%= link_to article_like_path(article_id: article.id ,id: article.likes[0].id), method: :delete, remote: true do %>
       <div class="vertical-align-top">
-        <i class="fas fa-plus-square text-danger"></i>
+        <i class="far fa-bookmark text-danger"></i>
         <span class="orange-text">
           <%= article.like_count %>
         </span>
@@ -12,7 +12,7 @@
   <% else %>
     <%= link_to article_likes_path(article.id), method: :post, remote: true do %>
       <div class="vertical-align-top">
-        <i class="fas fa-plus-square text-multed"></i>
+        <i class="far fa-bookmark text-multed"></i>
         <span class="grey-text text-multed">
           <%= article.like_count %>
         </span>
@@ -24,14 +24,14 @@
 
   <% if !article.like_count.nil? && article.like_count > 0 %>
     <div class="vertical-align-top">
-        <i class="fas fa-plus-square text-danger"></i>
+        <i class="far fa-bookmark text-danger"></i>
       <span class="orange-text">
         <%= article.like_count %>
       </span>
     </div>
   <% else %>
     <div class="vertical-align-top">
-        <i class="fas fa-plus-square text-multed"></i>
+        <i class="far fa-bookmark text-multed"></i>
       <span class="grey-text text-multed">
         <%= article.like_count %>
       </span>

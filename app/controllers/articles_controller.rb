@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article = Article.find_by(id: params[:id])
+    @user = @article.user
     @latitude = @article.latitude
     @longitude = @article.longitude
     @address = @article.address
@@ -83,6 +84,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:date, :title, :body, :country, :category, :address, :latitude, :longitude, :tag_list, article_pictures_pictures: [])
+      params.require(:article).permit(:date, :title, :body, :country, :category, :address, :latitude, :longitude, :tag_list, :main_picture, article_pictures_pictures: [])
     end
 end

@@ -1,6 +1,15 @@
-<h1>Editing Article</h1>
+<div class="container">
+  <div class="form">
+    <%= render 'form', article: @article %>
+  </div>
 
-<%= render 'form', article: @article %>
+  <div class="row">
+    <div class="col-lg-8 col-md-6 ml-auto mr-auto mb-5">
+      <%= link_to '<< Back articles', articles_path, class: "btn btn-primary btn-sm ml-2"%>
+      <%= link_to 'read article', @article, class: "btn btn-primary btn-sm ml-2"%>
+    </div>
+  </div>
 
-<%= link_to 'Show', @article %> |
-<%= link_to 'Back', articles_path %>
+</div>
+
+    

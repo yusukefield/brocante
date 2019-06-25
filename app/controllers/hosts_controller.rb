@@ -1,6 +1,8 @@
 class HostsController < ApplicationController
 def show
      @host = Host.find(params[:id])
+     #@events = @host.events
+     @events = Event.where(host_id: @host.id).all
   end
 
   def edit

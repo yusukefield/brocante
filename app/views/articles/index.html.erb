@@ -1,44 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Articles</h1>
+<div class="container">
+ <div class="form">
 
-<table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Country</th>
-      <th>Category</th>
-      <th>tags</th>
-      <th>Address</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+　<div class="row">
 
-  <tbody>
     <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.date %></td>
-        <td><%= article.title %></td>
-        <td><%= article.body %></td>
-        <td><%= article.country %></td>
-        <td><%= article.category %></td>
-        <td>
-          <% article.tag_list.each do |tag| %>
+     <div class="col-xs-6 col-lg-3 text-center mb-4">
+
+　　　<div class="card-columns">
+      <%= link_to article do %>
+      <div class="card" style="width: 15rem;">
+        <div class="card-img-top">
+          <%= attachment_image_tag article, :main_picture, fallback: "no_image.jpg", class: "img-fluid mx-auto rounded-top"%>
+        </div>
+
+        <div class="card-body">
+          <%= article.title.truncate(25) %>
+          <p class="card-text"><%= simple_format article.body.truncate(60) %></p>
+          <div><% article.tag_list.each do |tag| %>
             <%= link_to tag, articles_path(tag_name: tag), class: "badge badge-primary" %>
             <!-- tag_nameにarticle.tag_listで取り出したタグをパラメータとして渡す -->
           <% end %>
-        </td>
-        <td><%= article.address %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="badge badge-pill badge-secondary btn-sm ml-2"><%= article.address %></div>
+          <div class="badge badge-pill badge-secondary btn-sm ml-2"><%= article.category %></div>
+        </div>
+      </div>
+      <% end %>
+     </div>
+
+     </div>
     <% end %>
-  </tbody>
-</table>
+
+  </div>
+
+
+ </div>
+</div>
 
 <br>
 
-<%= link_to 'New Article', new_article_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Article', new_article_path %>
+<% end %>

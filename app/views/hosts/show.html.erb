@@ -1,12 +1,67 @@
-<h1>Hosts#show</h1>
+<div class="container">
+ <div class="form">
 
-<p>会社名/団体名 : <%= @host.group_name %></p>
-<p>代表者名 : <%= @host.rep_name %></p>
-<p>住所 : <%= @host.address %></p>
-<p>電話番号 : <%= @host.phonenum %></p>
-<p>連絡用メールアドレス : <%= @host.email %></p>
-<p>ホームページURL : <%= @host.url %></p>
+  <dev class="row">
+	<div class="col-md-4">
 
-<% if @host.id == current_host.id %>
- <p><%= link_to "プロフィール編集", edit_host_path(@host) %></p>
-<% end %>
+
+		<div class="card" style="width: 20rem;">
+		  <div class="card-body">
+		  	<h5 class="card-title">主催者様情報</h5>
+		  </div>
+
+		  <ul class="list-group list-group-flush">
+            <p class="list-group-item">会社名/団体名 : <%= @host.group_name %></p>
+            <p class="list-group-item">代表者名 : <%= @host.rep_name %></p>
+            <p class="list-group-item">住所 : <%= @host.address %></p>
+            <p class="list-group-item">電話番号 : <%= @host.phonenum %></p>
+            <p class="list-group-item">連絡用メールアドレス : <%= @host.email %></p>
+            <p class="list-group-item">ホームページURL : <%= @host.url %></p>
+          </ul>
+
+          <div class="card-body">
+            <% if host_signed_in? %>
+          	  <% if @host.id == current_host.id %>
+                <p><%= link_to "プロフィール編集", edit_host_path(@host), class: "btn btn-secondary btn-sm mb-2" %></p>
+                <p><%= link_to "イベント記事投稿", new_event_path(@host), class: "btn btn-secondary btn-sm mb-2" %></p>
+              <% end %>
+            <% end %>
+          </div>
+		</div>
+  </div>
+
+  <div class="col-md-8">
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th><h5>\ All Event /</h5></th>
+                <th colspan="4"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @events.each do |event| %>
+                <tr>
+                  <td><%= link_to event do %>
+                    <%= attachment_image_tag event, :picture, format: 'jpeg', class: "", fallback: "no_image.jpg", :size =>'100x70' %></td>
+                  <% end %>
+                  <td><%= event.date %></td>
+                  <td><%= event.title %></td>
+                  <% if host_signed_in? %>
+                    <% if @host.id == current_host.id %>
+                      <td><%= link_to '内容を編集', edit_event_path(event), class: "btn btn-secondary btn-sm mb-2" %></td>
+                      <td><%= link_to '投稿を破棄', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary btn-sm mb-2" %></td>
+                    <% end %>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+  </div>
+  </dev>
+
+ </div>
+</div>
+

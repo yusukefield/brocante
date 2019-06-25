@@ -19,44 +19,40 @@
   
   <body>
 
-    <!-- <script src="brocante.js"></script> -->
-    <!-- <script src="float-my-box.js"></script> -->
-    <!-- <script src="anker.js"></script> -->
+    <%= render 'layouts/flash' %>
 
 
 
-    <header class="site-header">
-    <h1 class="site-logo"><img src="" alt="BROCANTE"></h1>
+
+  <header class="site-header">
+    <h1 class="site-logo"><%= link_to 'Brocante', root_path %></h1>
     <nav class="gnav">
         <ul class="gnav__menu">
-            <h5 class="gnav__menu__item fas fa-angle-double-down mr-2"><a href="#sec1"> About</a></h5>
 
-            <h5 class="gnav__menu__item fas fa-handshake mr-2"><a href="#sec2"> toHost</a></h5>
-
-            <h5 class="gnav__menu__item fas fa-info-circle mr-2"><a href=""> Info</a></h5>
-
+            <span class="gnav__menu__item"><h5 class="fas fa-angle-double-down mr-2"><a href="#sec1"> About</a></h5></span>
+            <span class="gnav__menu__item"><h5 class="fas fa-handshake mr-2"><a href="#sec2"> toHost</a></h5></span>
+            <span class="gnav__menu__item"><h5 class="fas fa-info-circle mr-2"><a href=""> Info</a></h5></span>
             <span class="gnav__menu__item">
-              <%= link_to "/articles" do %>
-                <h5 class="gnav__menu__item fas fa-book-open mr-2"> Articles</h5>
+              <%= link_to articles_path do %>
+                <h5 class="gnav__menu__item fas fa-book-open mr-2"><a href=""> Articles</a></h5>
               <% end %>
             </span>
 
             <span class="gnav__menu__item">
-              <%= link_to "/events" do %>
-                <h5 class="gnav__menu__item fas fa-warehouse mr-2"> Events</h5>
+              <%= link_to events_path do %>
+                <h5 class="gnav__menu__item fas fa-warehouse mr-2"><a href=""> Events</a></h5>
               <% end %>
             </span>
 
              <% if host_signed_in? then %>
                <span class="gnav__menu__item">
-                <%= link_to "/host" do %>
-                  <h5><i class="gnav__menu__item fas fa-book-open mr-2"></i>Log-out</h5>
-                <% end %>
-                  %= link_to 'Log-out', destroy_host_session_path, method: :delete %></span>
+               <h5 class="gnav__menu__item fas fa-sign-out-alt mr-2">
+               <%= link_to 'Log-out', destroy_host_session_path, method: :delete %></h5></span>
              <% end %>
+
         </ul>
     </nav>
-　　 </header>
+　</header>
 
     <%= yield %>
       <footer class="site-footer">

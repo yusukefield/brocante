@@ -11,6 +11,8 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @host = @event.host
+    #@event = @host.event
     @latitude = @event.latitude
     @longitude = @event.longitude
     @address = @event.address

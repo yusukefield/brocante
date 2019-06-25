@@ -9,6 +9,7 @@ class Article < ApplicationRecord
     after_validation :geocode
     acts_as_taggable
     enum category:{report: 0,item: 1,coodinate: 2}
+    attachment :main_picture
     # ユーザーが持っているlikeモデルを探す
     def like_user(user_id)
         likes.find_by(user_id: user_id)

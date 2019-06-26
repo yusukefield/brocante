@@ -1,18 +1,17 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_host!, only: [:edit, :create, :update, :destroy]
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.where("events.date > ?", DateTime.now).reorder(:date)
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
     @host = @event.host
-    #@event = @host.event
     @latitude = @event.latitude
     @longitude = @event.longitude
     @address = @event.address

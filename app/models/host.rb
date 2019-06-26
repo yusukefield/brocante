@@ -5,8 +5,8 @@ class Host < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :events, dependent: :destroy
 
-  validates :group_name, presence: true
-  validates :rep_name, presence: true
+  validates :group_name, presence: true, length: { maximum: 15 }
+  validates :rep_name, presence: true,  length: { maximum: 15 }
   validates :address, presence: true
-  validates :phonenum, presence: true
+  validates :phonenum, presence: true,  length: { maximum: 13 }
 end

@@ -84,6 +84,7 @@ gem 'geocoder'
 gem 'jp_prefecture'
 gem 'country_select'
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'dotenv-rails' # 環境変数でAPIを隠す
 # helper
 gem 'annotate'
 gem 'pry-byebug'

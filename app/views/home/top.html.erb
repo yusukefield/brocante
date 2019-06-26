@@ -5,9 +5,11 @@
       <div class="col-md-12">
         <div class="main-visual">
         <div class="theTarget">
-            <div style="background-image: url(sample01.jpg)"></div>
-            <div style="background-image: url(sample02.jpg)"></div>
-            <div style="background-image: url(sample03.jpg)"></div>
+            <div style="background-image: url(sample24.jpg)"></div>
+            <div style="background-image: url(sample25.jpg)"></div>
+            <div style="background-image: url(sample26.jpg)"></div>
+            <div style="background-image: url(sample28.jpg)"></div>
+            <div style="background-image: url(sample29.jpg)"></div>
         </div>
         </div>
       </div>
@@ -23,7 +25,7 @@
 
               <div class="display-3" id="sec1">About
               <h5 class="text-muted">このサイトについて</h5></div>
-              <h5>「Brocante」とはフランス語で「美しいガラクタ」の意味です。<br>
+              <h5 class="text">「Brocante」とはフランス語で「美しいガラクタ」の意味です。<br>
               アンティークほど高価で貴重なわけではないけれど、人と一緒に生活を営んできた痕跡を持ちながら
               形を成す雑貨たちは唯一無二の価値を持つ存在です。<br>
               ここではそんな人の手を渡ってきた雑貨を扱う蚤の市やショップ、イベントの情報を共有できるサイトと
@@ -35,7 +37,7 @@
                 <div class="col-md-4 col-sm-6 text-center mt-4 mb-4">
                    <img class="rounded-circle img-fluid d-block mx-auto" src="/assets/sample04.jpg" alt=""><br>
                    <h3>イベントや出店情報をチェックしよう！</h3>
-                   <p>あなたの近所で行われている「蚤の市」情報をチェックして出かけてみよう！<br>
+                   <p>あなたの近所で行われている「蚤の市」の情報をチェックして出かけてみよう！<br>
                    イベント情報をブックマークするとマイページに予定が表示されます！</p>
                 </div>
 
@@ -47,19 +49,19 @@
                 </div>
 
                 <div class="col-md-4 col-sm-6 text-center mt-4  mb-4">
-                  <img class="rounded-circle img-fluid d-block mx-auto" src="/assets/sample06.jpg" alt=""><br>
+                  <img class="rounded-circle img-fluid d-block mx-auto" src="/assets/sample35.jpg" alt=""><br>
                   <h3>旅行先の蚤の市情報を集めよう！</h3>
-                  <p>旅先でしか会うことのできない名産品、限定品。特に海外では蚤の市が頻繁に行われています。<br>
-                  「Brocante」では現地の方からの貴重な情報も共有することができますよ！</p>
+                  <p>旅先だから出会うができる工芸品、特に海外では蚤の市が頻繁に行われています。<br>
+                  Brocanteでは現地の方からの貴重なマーケット情報も共有することができますよ！</p>
                 </div>
               </div>
 
 
-            <div class="display-3 mb-4"  id="sec2">to Hosts
-              <h5 class="text-muted">イベント主催者・オーナー様</h5></div>
-                <h3>当サイトではイベントを企画されている会社様、団体様の登録をお待ちしております。<br>
-                    イベントの内容を投稿して当サイト利用者に向け告知をすることができます。
-                    是非フリーマーケットや蚤の市等の情報をお寄せください</h3>
+            <div class="display-3 mb-4"  id="sec2">to Host
+              <h5 class="text-muted">イベント主催者・オーナー様</h5>
+                <h5 class="text"> 当サイトではイベントを企画されている会社様、団体様の登録をお待ちしております。<br>
+                    イベントの内容を投稿して当サイト利用者に向け告知をすることができます<br>
+                    是非企画されているフリーマーケットや蚤の市等の情報をお寄せください</h5>
 
                     <div class="card" style="width: 40rem;">
                         <div class="card-header">
@@ -77,6 +79,19 @@
                          <% end %>
                         </div>
                    </div>
+            </div>
+
+            <div class="display-3 mb-4"  id="sec3">Infomation
+              <h5 class="text-muted ">お問い合わせ</h5>
+                <h5 class="text">当サイトに関するご質問、お問い合わせはこちらよりお願いいたします。<br>
+                    e-mail: brocante@×××××.com<br></h5>
+                    <h5 class="text mt-2">FOLLOW US <i class="fab fa-instagram ml-4"></i><i class="fab fa-facebook-f ml-4"></i><i class="fab fa-twitter ml-4"></i></h5>
+                    <% if user_signed_in? %>
+                      <% if current_user.admin_flg == true %>
+                        <%= link_to 'Admin Log-in', rails_admin_path, class: "btn btn-info btn-sm mb-2" %>
+                      <% end %>
+                    <% end %>
+            </div>
 
           </div>
         </div>

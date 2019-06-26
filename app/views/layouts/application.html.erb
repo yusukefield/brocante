@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %> <!-- bootstrap4を読み込む！ -->
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> <!-- bootstrap4を読み込む！ -->
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBClg0DBgLluH4TKeYOZDfBFXWQc-xLATs&callback=initMap" async defer></script> <!-- googlemapを読み込む！ -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"]%>&callback=initMap" async defer></script> <!-- googlemapを読み込む！ -->
 
     <link rel=“stylesheet” href=“style.css”> <!-- style.cssを読み込む！ -->
     <%= stylesheet_link_tag "custom", :media => "all" %> <!-- bootstapに上書きするcssを読み込む！ -->
@@ -31,17 +31,12 @@
 
             <span class="gnav__menu__item"><h5 class="fas fa-angle-double-down mr-2"><a href="#sec1"> About</a></h5></span>
             <span class="gnav__menu__item"><h5 class="fas fa-handshake mr-2"><a href="#sec2"> toHost</a></h5></span>
-            <span class="gnav__menu__item"><h5 class="fas fa-info-circle mr-2"><a href=""> Info</a></h5></span>
-            <span class="gnav__menu__item">
-              <%= link_to articles_path do %>
-                <h5 class="gnav__menu__item fas fa-book-open mr-2"><a href=""> Articles</a></h5>
-              <% end %>
+            <span class="gnav__menu__item"><h5 class="fas fa-info-circle mr-2"><a href="#sec3"> Info</a></h5></span>
+            <span class="gnav__menu__item"><h5 class="fas fa-book-open mr-2">
+              <%= link_to ' Articles', articles_path %></h5>
             </span>
-
-            <span class="gnav__menu__item">
-              <%= link_to events_path do %>
-                <h5 class="gnav__menu__item fas fa-warehouse mr-2"><a href=""> Events</a></h5>
-              <% end %>
+            <span class="gnav__menu__item"><h5 class="fas fa-warehouse mr-2">
+              <%= link_to ' Events', events_path %></h5>
             </span>
 
              <% if host_signed_in? then %>
@@ -56,7 +51,7 @@
 
     <%= yield %>
       <footer class="site-footer">
-        <p class="copyright">@2019 WEBCAMP</p>
+        <p class="copyright">@WEBCAMP 2019_04 yusuke.H ALL RIGHT RESERVED </p>
       </footer>
   </body>
 </html>

@@ -1,18 +1,16 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:edit, :update]
   def show
-     @user = User.find(params[:id])
-     #@event = Event.find(params[:id])
      @join = Join.where(user_id: @user.id).all
      @articles = Article.where(user_id: @user.id).all
      @like = Like.where(user_id: @user.id).all
   end
 
   def edit
-     @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if current_user == @user
 
      if @user.update(user_params)
@@ -27,6 +25,9 @@ class UsersController < ApplicationController
 
 
   private
+  def set_user
+      @user = User.find(params[:id])
+  end
   def user_params
       params.require(:user).permit(:name, :webname, :profile, :image, :email)
   end

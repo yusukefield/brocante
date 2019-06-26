@@ -1,18 +1,16 @@
 class HostsController < ApplicationController
+  before_action :set_host
+  before_action :authenticate_host!, only: [:edit, :update]
 def show
-     @host = Host.find(params[:id])
-     #@events = @host.events
      @events = Event.where(host_id: @host.id).all
   end
 
   def edit
-     @host = Host.find(params[:id])
   end
 
   def update
-    @host = Host.find(params[:id])
     if current_host == @host
- 
+
      if @host.update(host_params)
         flash[:success] = 'ユーザー情報を編集しました。'
         redirect_to host_path(@host)
@@ -24,6 +22,9 @@ def show
   end
 
   private
+  def set_host
+    @host = Host.find(params[:id])
+  end
   def host_params
       params.require(:host).permit(:group_name, :rep_name, :address, :phonenum, :url, :email)
   end

@@ -5,11 +5,14 @@ class Event < ApplicationRecord
   has_many :users, through: :joins, source: :event
   geocoded_by :address
   after_validation :geocode
-
-  #def joined_by?(user)
-   #joins.where(user_id: user.id).exists?
-  #end
-  #
+  default_scope -> { order(date: :desc) }
+  # 時間の降順に表示
+  with_options presence: true do
+    validates :title, length: { maximum: 30 }
+    validates :body, length: { maximum: 1000 }
+    validates :address
+    validates :date
+  end
   def join_user(user_id)
     joins.find_by(user_id: user_id)
   end

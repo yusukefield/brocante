@@ -30,7 +30,7 @@
 
         <div class="field">
           <p>テキスト入力部分　(1000文字以内)</p>
-          <%= form.text_area :body, :size => "70x20" %>
+          <%= form.text_area :body, :size => "100x20" %>
         </div>
 
         <%= attachment_image_tag @event, :picture, format: 'jpeg', class: "", fallback: "no_image.jpg", :size =>'150x100' %><br>

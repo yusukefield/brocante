@@ -1,0 +1,31 @@
+<div class="sticky-top">
+
+        <% if !user_signed_in? %>
+          <div class="card" style="width: 15rem;">
+
+		  <div class="card-header text-center">主催者様情報</div>
+
+         <div class="card-body">
+		    <ul class="list-group list-group-flush">
+              <p class="list-group-item">会社名/団体名 :<br> <%= host.group_name %></p>
+              <p class="list-group-item">代表者名 :<br> <%= host.rep_name %></p>
+              <p class="list-group-item">住所 :<br> <%= host.address %></p>
+              <p class="list-group-item">電話番号 :<br> <%= host.phonenum %></p>
+              <p class="list-group-item">連絡用メールアドレス :<br> <%= host.email %></p>
+              <p class="list-group-item">ホームページURL :<br> <%= host.url %></p>
+            </ul>
+		  </div>
+
+            <div class="card-footer">
+              <% if host_signed_in? %>
+          	    <% if host.id == current_host.id %>
+                  <p><%= link_to "登録情報編集", edit_host_path(host), class: "btn btn-secondary btn-sm" %></p>
+                  <p><%= link_to "イベント記事投稿", new_event_path(host), class: "btn btn-secondary btn-sm" %></p>
+                  <span><%= link_to "マイページ", host_path(host), class: "btn btn-secondary btn-sm" %></span>
+                <% end %>
+              <% end %>
+            </div>
+
+		  </div>
+		<% end %>
+</div>

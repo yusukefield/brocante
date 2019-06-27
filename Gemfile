@@ -91,5 +91,5 @@ gem 'pry-byebug'
 #gem 'selenium-webdriver', '~> 3.11'
 #gem 'capybara', '~> 2.18'
 #gem 'rspec', '~> 3.7'
-
+gem 'carrierwave'
 

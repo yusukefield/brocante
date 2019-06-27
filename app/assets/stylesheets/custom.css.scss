@@ -1,7 +1,7 @@
 
 $main-theme-color: #20A2B3; //メインカラー　ブルー
 $base-theme-color: #EDFDFF; //バックカラー　ペールブルー
-/* $base-hover-color: #; //ホバーカラー*/
+$base-hover-color: #dcdcdc; //ホバーカラー グレー
 $sub-theme-color: #82F1FF; //サブカラー　ライトブルー
 $accent-theme-color: #FFA15B; //アクセントカラー　コーラルオレンジ
 $base-text-color: #BAAA9E; //ベースのフォント色　グレー
@@ -19,7 +19,6 @@ body {
 }
 
 /*----------------------------------*/
-/**/
 
 /*  bootstrapのカスタムレイアウト  */
 
@@ -38,15 +37,24 @@ body {
     background-color: #FFA15B;
     border-radius: 0;
 }
+.btn-primary:visited {
+    color: white;
+}
 .btn-secondary {
     color: white;
     border-color: #82F1FF;
     background-color: #82F1FF;
 }
-.btn btn-info {
+.btn-secondary:visited {
+    color: white;
+}
+.btn-info {
     color: white;
     border-color: #58868A;
     background-color: #58868A;
+}
+.btn-info:visited {
+    color: white;
 }
 .badge-secondary {
     color: white;
@@ -54,9 +62,15 @@ body {
     background-color: #58868A;
     border-radius: 0;
 }
+.badge-secondary:visited {
+    color: white;
+}
 .badge-primary {
     color: white;
     background: #FFA15B;
+}
+.badge-primary:visited {
+    color: white;
 }
 body{
     background: #EDFDFF;
@@ -91,9 +105,11 @@ body{
     background: rgba(255,255,255,0.9);
     padding: 20px;
 }
-.site-logo img{
-    height: 20px;
+.site-logo {
     width: auto;
+    background: -moz-radial-gradient(#82F1FF 20%,  transparent 70%); 
+    background: -webkit-radial-gradient(#82F1FF 20%,  transparent 70%); 
+    background: radial-gradient(#82F1FF 20%,  transparent 70%); 
 }
 .gnav__menu{
     display: flex;
@@ -114,6 +130,16 @@ body{
 }
 .content p{
     margin-bottom: 40px;
+}
+.display-3 {
+    color: #58868A;
+}
+a{
+  transition: color 0.3s;
+}
+a:hover{
+  color : #dcdcdc;
+  background-color: transparent;
 }
 .fa-book-open {
     color: #20A2B3;
@@ -136,13 +162,48 @@ body{
 /*トップページ*/
 
 .main-visual {
-	height: 500px; 
+	height: 500px;
     position: relative;
     z-index: 0;
+}
+.main-visual-content {
+  width: 25%;
+  height: 500px;
+  background: rgba(0,0,0,0.5);
+  font-family: 游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN","Hiragino Mincho Pro",HGS明朝E,メイリオ,Meiryo,serif;
+}
+.main-visual-text {
+  color: #fff;
+  position: absolute;
+  bottom: 0;
 }
 
 .sticky-top {
     margin-top: 150px;
+}
+.display-3 {
+  position: relative;
+  padding-left: 25px;
+}
+
+.display-3:before {
+  position: absolute;
+  content: '';
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: none;
+  border-left: solid 15px transparent;
+  border-bottom: solid 15px rgb(119, 195, 223);
+}
+.display-3:after {
+  position: absolute;
+  content: '';
+  bottom: -3px;
+  left: 10px;
+  width: 100%;
+  border-bottom: solid 3px rgb(119, 195, 223);
 }
 /*------------入力フォーム----------------*/
 .form {
@@ -173,8 +234,9 @@ form.text_area {
   width: 300px;
 }
 textarea {
-    width: 300px;
+    width: 500px;
 }
+
 /*------------内容詳細部分----------------*/
 .text {
     color: #BAAA9E;

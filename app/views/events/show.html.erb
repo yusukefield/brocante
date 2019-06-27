@@ -34,10 +34,14 @@
 
     <dev class="row ">
       <div class="col-md-3">
+
         <%= render partial: '/home/mybox' %>
+        <%= render partial: '/home/hostsbox', locals: { host: current_host } %>
       </div>
+
+
       <div class="col-md-9 float-right">
-    
+
         <dev class="row ">
           <div class="col-md-10 offset-md-1 mr-auto">
             <%= attachment_image_tag @event, :picture, format: 'jpeg', class: "rounded", fallback: "no_image.jpg", :size =>'800x500' %>

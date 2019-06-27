@@ -12,7 +12,9 @@
 
      <div class="col-md-3">
       <%= render partial: '/home/mybox' %>
-      <%= render partial: '/home/hostsbox', locals: {host: current_host} %>
+      <% if host_signed_in? %>
+        <%= render partial: '/home/hostsbox', locals: {host: current_host} %>
+      <% end %>
      </div>
 
       <div class="col-md-9 float-right">

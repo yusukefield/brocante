@@ -73,7 +73,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.4.1'
 # view
-gem 'kaminari', '~> 1.1.1'
+gem 'kaminari', '~> 1.2.1'
 gem 'rails-i18n', '~> 5.1'
 gem 'gretel'
 gem "select2-rails"
